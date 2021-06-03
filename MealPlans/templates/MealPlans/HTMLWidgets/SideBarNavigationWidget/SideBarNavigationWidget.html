@@ -1,0 +1,20 @@
+{% load static %}
+<div id="meal_plans_side_bar" class="meal_plans_side_bar_wrapper">
+    <div  class="meal_plans_side_bar">
+        <div id="meal_plans_side_bar_close" class="meal_plans_side_bar_close">
+            <div class="meal_plans_side_bar_close_wrapper">
+               <i class='bx bx-x'></i>
+            </div>
+        </div>
+        <div class="meal_plans_side_bar_main_content">
+            {% for plans in all_instances %}
+               <div class="meal_plans_side_bar_nav_link_wrapper
+               {% if instance.plan_name == plans.plan_name %}
+               meal_plans_side_bar_nav_link_wrapper_active
+               {% endif %}" >
+                <a href="{{ plans.get_absolute_url }}">{{ plans.plan_name }}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

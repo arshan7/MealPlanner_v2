@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>Meal Plans</title>
+    {% endblock %}
+
+    {% block base_styles_font %}
+    {% endblock %}
+
+    {% block main_page_extenal_css %}{% endblock %}
+    {% block main_page_external_css_scripts %}{% endblock %}
+    {% block dynamic_page_external_css %}{% endblock %}
+    {% block main_page_before_html_external_scripts %}{% endblock %}
+</head>
+<body>
+{% block main_header %}{% endblock %}
+{% block sub_header_for_main_page %}{% endblock %}
+{% block main_nav_bar %}{% endblock %}
+
+{% block main_content %}{% endblock %}
+
+{% block main_footer %}{% endblock %}
+
+{% block main_page_after_html_scripts %}{% endblock %}
+{% block main_page_dynamic_external_scripts %}{% endblock %}
+</body>
+</html>

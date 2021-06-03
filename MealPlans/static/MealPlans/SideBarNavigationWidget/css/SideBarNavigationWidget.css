@@ -1,0 +1,98 @@
+.meal_plans_side_bar_button {
+    margin: 5px;
+    cursor: pointer;
+    background-color: lightslategrey;
+}
+
+.meal_plans_side_bar_wrapper {
+    visibility: hidden;
+    opacity: 0;
+    padding: 5px;
+    z-index: 1;
+    background-color: lightslategrey;
+    height: 100vh;
+    position: fixed;
+    width: 0;
+    overflow: hidden;
+    transition: 0.5s linear;
+}
+
+
+.meal_plans_side_bar_show {
+    visibility: visible;
+    width: 200px;
+    opacity: 1;
+}
+
+.meal_plans_side_bar_main_content {
+    overflow: hidden;
+}
+.meal_plans_side_bar_nav_link_wrapper a{
+    text-decoration: none;
+    color: black;
+}
+
+.meal_plans_side_bar_nav_link_wrapper {
+    padding: 10px 5px 10px 5px;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+    align-content: center;
+    width:200px;
+    transition: background-color 0.5s;
+}
+
+.meal_plans_side_bar_nav_link_wrapper:hover a {
+    color: #323030;
+    transition: color 0.5s;
+}
+
+.meal_plans_side_bar_nav_link_wrapper:hover {
+    background-color: white;
+    cursor: pointer;
+}
+
+.meal_plans_side_bar_nav_link_wrapper_active{
+    background-color: #313855;
+}
+
+
+/*close button*/
+
+.meal_plans_side_bar_close {
+    margin-bottom: 35px;
+}
+
+.meal_plans_side_bar_close i {
+    color: white;
+    font-size: 25px;
+    transition: color 0.5s;
+}
+
+
+.meal_plans_side_bar_close_wrapper {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 2px;
+    transition: background-color 0.5s;
+}
+
+.meal_plans_side_bar_close_wrapper:hover {
+    background-color: white;
+    cursor: pointer;
+}
+
+.meal_plans_side_bar_close_wrapper:hover i {
+    color: #323030;
+}
+
+
+
+
+
+

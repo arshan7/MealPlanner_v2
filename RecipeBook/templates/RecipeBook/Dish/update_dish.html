@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+
+</head>
+<body>
+<form id="update_dish_form" method="POST" action="{% url "RecipeBook:update_dish" %}">
+    {% csrf_token %}
+   {{ form.as_p }}
+    <input type="submit" value="submit"/>
+</form>
+
+<script src="{% static "js/dish.js"  %}"></script>
+</body>
+</html>

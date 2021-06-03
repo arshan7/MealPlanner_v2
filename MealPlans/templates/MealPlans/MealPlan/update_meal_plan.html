@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    {% load coreTemplates %}
+</head>
+<body>
+<form id="update_meal_plan_form" method="POST" action="{% url "MealPlans:update_meal_plan_all" %}"
+      data-ajax_load = {% url "MealPlans:ajax_load_meals_based_on_day" %}
+       >
+    {% csrf_token %}
+    {% for field in form %}
+        {{ field.label }}
+        {{ field }}
+        <div id="load_meal_{{ field.label|lower}}">
+            {% if model is not None %}
+                {% get_object_variable model field.name as day %}
+                {% if day is not None %}
+                    {% for foodgroups in day.food_groups.all %}
+                        <div> {{ foodgroups.title }}</div>
+                        {% for item in  foodgroups.food_items.all %}
+                            {{ item.name }}
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endfor %}
+    <input type="submit" value="submit"/>
+</form>
+<script src={% static 'js/AjaxHandler.js' %}></script>
+<script src={% static 'js/update_meal_plan.js' %}></script>
+</body>
+</html>

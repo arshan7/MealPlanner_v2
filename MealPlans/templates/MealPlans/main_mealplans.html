@@ -1,0 +1,47 @@
+{% extends 'core/base/base.html' %}
+
+{% load static %}
+
+{% block main_page_extenal_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'MealPlans/css/main_mealplans.css' %}"/>
+    <link rel="stylesheet"
+          href="{% static 'MealPlans/MealPlanDaysNavigationWidget/css/MealPlanDaysNavigationWidget.css' %}"/>
+    {% include 'MealPlans/HTMLWidgets/DayWidget/DayWidgetIncludes.html' %}
+{% endblock %}
+
+{% block main_page_external_css_scripts %}
+    {{ block.super }}
+    {% include 'MealPlans/HTMLWidgets/SideBarNavigationWidget/SideBarNavigationWidgetIncludes.html' %}
+
+{% endblock %}
+
+{% block main_content %}
+    <div id="meal_plans_menu_bar" class="meal_plans_menu_bar" data-url="{% url 'MealPlans:ajax_save_default_day' %}">
+        <div>
+            <i class="bx bx-menu bx-md meal_plans_side_bar_button" id="meal_plans_side_bar_button"></i>
+        </div>
+        <div class="meal_plans_menu_spacer"></div>
+        {% include 'MealPlans/HTMLWidgets/MealPlanDaysNavigationWidget/MealPlanDaysNavigationWidget.html' %}
+    </div>
+    {% include 'MealPlans/HTMLWidgets/SideBarNavigationWidget/SideBarNavigationWidget.html' %}
+    <div class="day_main">
+        {% include 'MealPlans/HTMLWidgets/DayWidget/DayWidgetWrapper.html' %}
+    </div>
+
+{% endblock %}
+
+{% block main_page_after_html_scripts %}
+    {{ block.super }}
+    <div id="state">
+         {{ data | json_script:'instance' }}
+    </div>
+    <script src="{% static "js/MealPlans/Main/main.js" %}"></script>
+    <script type="text/javascript"
+            src="{% static "MealPlans/SideBarNavigationWidget/js/SideBarNavigationWidget.js" %}"></script>
+    <script type="text/javascript" src="{% static "MealPlans/DayWidget/js/DayWidget_day_plan_display.js" %}"></script>
+    <script type="text/javascript" src="{% static "MealPlans/DayWidget/FoodGroupWidget/js/FoodGroupWidget.js" %}"></script>
+
+
+
+{% endblock %}

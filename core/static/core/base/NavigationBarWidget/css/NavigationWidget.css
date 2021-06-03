@@ -1,0 +1,25 @@
+.nav_bar {
+    display: flex;
+    background-color: #2ed089;
+    padding: 10px 50px;
+}
+
+.nav_link_wrapper {
+    padding: 2px;
+    display: flex;
+}
+
+.nav_link_wrapper a {
+    color:black;
+    padding: 3px;
+    text-decoration-line: none;
+}
+
+.nav_link_wrapper a:hover{
+    color:white;
+    background-color:black
+}
+
+.nav_link_active {
+    background-color: #ced0d0;
+}

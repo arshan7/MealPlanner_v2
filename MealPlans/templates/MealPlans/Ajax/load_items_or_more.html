@@ -1,0 +1,9 @@
+<div class="main_add_items_load_items">
+    {% for food_item in filter_items %}
+        {% include 'MealPlans/HTMLWidgets/FoodItemLoadWidget/FoodItemLoadWidget.html' with item=food_item %}
+    {% empty %}
+    <p> No results found</p>
+{% endfor %}
+</div>
+
+

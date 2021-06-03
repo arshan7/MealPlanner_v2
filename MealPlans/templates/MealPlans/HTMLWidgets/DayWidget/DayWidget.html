@@ -1,0 +1,21 @@
+<div id= "day_{{ day_id }}" class="day {% if instance.default_day.lower != day_id %}day_hide{% endif %}">
+    <div class="day_section">
+        <div class="day_details_wrapper">
+            <div class="day_details">
+                <p class="day_name">{{ day_id }}</p>
+            </div>
+            {% include 'MealPlans/HTMLWidgets/DayWidget/FoodGroupWidget/CalorieTrackerWidget/CalorieTrackerWidget.html' %}
+        </div>
+        <div class="day_options">
+            <i class='bx bx-dots-vertical-rounded'></i>
+        </div>
+        <div class="day_group_add">
+            <i class="bx bx-plus"></i>
+        </div>
+    </div>
+    <div class="food_group_section">
+        {% for fg in day.FoodGroup.all %}
+        {% include 'MealPlans/HTMLWidgets/DayWidget/FoodGroupWidget/FoodGroupWidget.html' with food_group=fg %}
+        {% endfor %}
+    </div>
+</div>

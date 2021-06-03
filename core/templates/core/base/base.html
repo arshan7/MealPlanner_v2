@@ -1,0 +1,35 @@
+{% extends 'core/base/root.html' %}
+
+{% load static %}
+{% block base_styles_font %}
+    {% include 'core/base/FontIncludes.html' %}
+{% endblock %}
+
+{% block main_page_extenal_css %}
+<link rel="stylesheet" href="{% static "core/base/css/base_global.css" %}" />
+    <link rel="stylesheet" href="{% static "core/base/BoxIcons/css/boxicons.min.css" %}" />
+{% endblock %}
+{% block main_page_external_css_scripts %}
+    {% include 'core/base/HeaderWidget/HeaderWidgetIncludes.html' %}
+    {% include 'core/base/NavigationBarWidget/NavigationWidgetIncludes.html' %}
+{% endblock %}
+
+{% block main_header %}
+    {% include 'core/base/HeaderWidget/HeaderWidget.html' %}
+{% endblock %}
+
+{% block main_nav_bar %}
+    {% include 'core/base/NavigationBarWidget/NavigationWidget.html' %}
+{% endblock %}
+
+
+{% block main_page_after_html_scripts %}
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static "core/base/js/global_script.js" %}"></script>
+    <script type="text/javascript" src="{% static "core/base/js/client_storage.js" %}"></script>
+{% endblock %}
+
+{% block main_footer %}
+
+{% endblock %}
+

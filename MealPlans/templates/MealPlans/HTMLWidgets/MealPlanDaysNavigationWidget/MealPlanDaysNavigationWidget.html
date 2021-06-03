@@ -1,0 +1,9 @@
+<div class="meal_plans_day_navigation_widget">
+    <div class="meal_plans_plan_name">{{ instance.plan_name }}</div>
+    <div class="meal_plans_menu_spacer"></div>
+    <div class="meal_plans_day_navigation_bar">
+        {% for day in days %}
+              <div id="select_{{ day }}" class="meal_plans_day_button">{{ day }}</div>
+        {% endfor %}
+    </div>
+</div>

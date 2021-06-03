@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+</head>
+<body>
+<form  id="update_days_form" method="POST" action="{% url 'MealPlans:update_day' %}">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <div id="load_change_preset"></div>
+    <input type="submit" value="submit"/>
+</form>
+<script src ="{% static "js/jquery.js" %}"></script>
+<script src="{% static "js/MealPlans/update_days.js" %}"></script>
+</body>
+</html>

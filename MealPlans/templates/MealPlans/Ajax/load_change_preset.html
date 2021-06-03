@@ -1,0 +1,33 @@
+{% load coreTemplates %}
+<table style="border-spacing: 10px 0">
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>Time</th>
+            <th>To
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for preset in first_preset %}
+        <tr>
+            <td>{{ preset.title }}</td>
+            <td>{{ preset.time }}</td>
+            {% get_dict_values second_preset preset as preset_second %}
+            <td>{{ preset_second.name }}</td>
+            <td>{{ preset_second.time }}</td>
+        </tr>
+    {% endfor %}
+    {% for preset in left_out_preset %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td>{{ preset.name }}</td>
+            <td>{{ preset.time }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div>
+    {{ form.as_p }}
+</div>

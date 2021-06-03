@@ -1,0 +1,8 @@
+{% if day is not None %}
+    {% for foodgroups in day.food_groups.all %}
+        <div> {{ foodgroups.title }}</div>
+        {% for item in  foodgroups.food_items.all %}
+            {{ item.name }}
+        {% endfor %}
+    {% endfor %}
+{% endif %}

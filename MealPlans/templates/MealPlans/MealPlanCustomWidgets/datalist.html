@@ -1,0 +1,11 @@
+<input list="{{ widget.attrs.id }}" name={{ widget.name }}/>
+<datalist {% include "django/forms/HTMLWidgets/attrs.html" %}>
+    {% for group_name, group_choices, group_index in widget.optgroups %}{% if group_name %}
+        <optgroup label="{{ group_name }}">{% endif %}
+    {% for option in group_choices %}
+        {% if option.label != "---------" %}
+            {% include option.template_name with widget=option %}
+        {% endif %}
+    {% endfor %}{% if group_name %}
+        </optgroup>{% endif %}{% endfor %}
+</datalist>

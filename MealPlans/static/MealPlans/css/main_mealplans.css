@@ -1,0 +1,20 @@
+.meal_plans_menu_bar {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: #027e9e;
+}
+
+.meal_plans_menu_spacer {
+    flex-basis : 50px;
+}
+
+.day_main{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+

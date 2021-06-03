@@ -1,0 +1,46 @@
+
+.day_details{
+    display: flex;
+
+}
+
+.day_details_wrapper{
+    flex:1;
+}
+.day_section{
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+    /*background: #d24f228a;*/
+}
+
+.day{
+    min-width:250px;
+    width: 500px;
+}
+
+.day_options{
+    margin-left: auto;
+    cursor: pointer;
+
+}
+
+.day_options:hover{
+    background-color: #949ba0;
+}
+
+.day_group_add{
+    cursor: pointer;
+}
+.day_options i{
+    font-size: 2rem;
+}
+
+.day_group_add i{
+    font-size: 2rem;
+}
+
+.day_hide{
+    display: none;
+}
+

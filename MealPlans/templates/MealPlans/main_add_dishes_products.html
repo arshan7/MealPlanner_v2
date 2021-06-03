@@ -1,0 +1,35 @@
+{% extends 'core/base/base.html' %}
+
+{% load static %}
+
+{% block main_page_extenal_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'MealPlans/css/main_add_dishes_products.css' %}">
+{% endblock %}
+{% block main_page_external_css_scripts %}
+    {{ block.super }}
+    {% include 'MealPlans/HTMLWidgets/FoodItemLoadWidget/FoodItemLoadIncludes.html' %}
+{% endblock %}
+
+{% block main_content %}
+    <div id="main_add_items_wrapper">
+        <div id="main_add_items_form" data-url="{% url 'MealPlans:ajax_load_more_products' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </div>
+
+        <div id="main_add_items">
+        </div>
+    <div>
+    <a href="{% url 'RecipeBook:create_dish' %}">Add Dish</a>
+        <a href="{% url 'RecipeBook:create_ingredient' %}">Create Ingredient</a>
+    </div>
+    </div>
+
+
+{% endblock %}
+
+{% block main_page_after_html_scripts %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'MealPlans/js/main_add_items.js' %}"></script>
+{% endblock %}

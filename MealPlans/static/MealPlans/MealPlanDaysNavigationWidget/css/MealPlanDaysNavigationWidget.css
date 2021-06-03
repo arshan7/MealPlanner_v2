@@ -1,0 +1,30 @@
+
+.meal_plans_day_navigation_widget {
+    display: flex;
+    flex:1;
+}
+
+.meal_plans_plan_name{
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+}
+.meal_plans_day_navigation_bar {
+    display: flex;
+    flex:1;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.meal_plans_day_button{
+    cursor: pointer;
+    transition: all 0.4s;
+    padding: 5px;
+}
+
+.meal_plans_day_button:hover{
+    color: white;
+    background-color: #323030;
+}
+

@@ -1,0 +1,15 @@
+.main_add_items_load_items{
+    width: 500px;
+}
+
+#main_add_items{
+    height: 400px;
+    overflow: auto;
+}
+
+#main_add_items_wrapper{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}

@@ -1,0 +1,17 @@
+<div class="food_item_wrapper">
+    <div class="food_item_details_wrapper">
+        <div class="food_item_details">
+            <b><p>{{ item.name }}</p></b>
+        </div>
+        <div class="food_item_portion">
+            <p>portion</p>
+        </div>
+        {% include 'MealPlans/HTMLWidgets/DayWidget/FoodGroupWidget/CalorieTrackerWidget/CalorieTrackerWidget.html' %}
+    </div>
+    <div class="food_item_option">
+        <i class="bx bx-dots-vertical-rounded"></i>
+    </div>
+    <div class="food_item_remove">
+        <i class='bx bx-x'></i>
+    </div>
+</div>

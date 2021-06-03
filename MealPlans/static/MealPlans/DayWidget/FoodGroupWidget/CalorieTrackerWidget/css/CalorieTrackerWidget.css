@@ -1,0 +1,16 @@
+.calorie_tracker_wrapper{
+    display: flex;
+    align-content: center;
+    align-items:center;
+    justify-content: space-around;
+
+}
+
+
+.calorie_tracker_parameters{
+    padding:2px;
+}
+
+.calorie_tracker_proteins{
+    margin-left: auto;
+}

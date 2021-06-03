@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+</head>
+<body>
+<form id="update_food_groups_form" method="POST" action="{% url "MealPlans:update_food_group" %}">
+    {% csrf_token %}
+   {{ form.as_p }}
+    <input type="submit" value="submit"/>
+</form>
+<script src="{% static "js/MealPlans/food_groups.js"  %}"></script>
+</body>
+</html>

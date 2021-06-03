@@ -1,0 +1,17 @@
+<div class="food_item_load_wrapper">
+    <div class="food_item_load_details_wrapper">
+        <div class="food_item_load_details">
+            <b><p>{{ item.name }}</p></b>
+        </div>
+        <div class="food_item_portion">
+            <p>portion</p>
+        </div>
+    </div>
+    <button id="food_item_load_submit" formaction="{% url 'MealPlans:ajax_save_item_to_food_group' %}"
+            class="food_item_load_add">
+        <input name="item_state" data-item_id="{{ item.name }}"
+                {% if item in existing_food_items %}
+               checked
+                {% endif %} onchange="save_item_to_food_group(this)" type="checkbox">
+    </button>
+</div>

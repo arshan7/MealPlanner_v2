@@ -1,0 +1,18 @@
+
+.food_item_load_wrapper{
+    display: flex;
+    padding: 5px 5px;
+    align-items: center;
+}
+.food_item_load_details{
+    display: flex;
+}
+
+.food_item_load_add{
+    border:none;
+    background:none;
+}
+
+.food_item_load_details_wrapper{
+    flex:1;
+}

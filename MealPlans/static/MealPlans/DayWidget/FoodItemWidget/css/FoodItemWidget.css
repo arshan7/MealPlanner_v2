@@ -1,0 +1,31 @@
+
+.food_item_wrapper{
+    display: flex;
+    padding: 5px 5px;
+    align-items: center;
+}
+.food_item_details{
+    display: flex;
+}
+.food_item_remove{
+    cursor: pointer;
+}
+
+.food_item_remove i {
+    font-size: 2rem;
+}
+
+.food_item_option{
+   font-size: 2rem;
+}
+.food_item_option:hover{
+    background-color: #949ba0;
+}
+
+.food_item_remove:hover{
+    background-color: #949ba0;
+}
+
+.food_item_details_wrapper{
+    flex:1;
+}

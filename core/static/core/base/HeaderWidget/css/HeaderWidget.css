@@ -1,0 +1,57 @@
+
+.page_logo {
+    width:auto;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Barlow,sans-serif;
+    font-size: 16px;
+}
+
+.page_content {
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 0 15px #ced0d0;
+}
+
+.page_header {
+    height: 90px;
+    position: relative;
+
+}
+
+.page_desktop_nav{
+    padding-top:25px;
+}
+.page_user_details{
+    margin-bottom: 15px;
+    margin-right: 125px;
+    font-size: .75rem;
+}
+
+#page_main_navigation_logout{
+    font-size: 1.16rem;
+    display: block;
+    text-decoration: none;
+    position: relative;
+    margin-bottom: 10px;
+    border: 0;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    color: #000;
+}
+
+.page_main_navigation{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}

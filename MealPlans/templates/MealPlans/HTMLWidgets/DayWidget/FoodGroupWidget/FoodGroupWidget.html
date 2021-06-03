@@ -1,0 +1,29 @@
+<div class="food_group_main_wrapper">
+    <div class="food_group_wrapper">
+        <div class="food_group_details_wrapper">
+            <div class="food_group_details">
+                <p>{{ food_group.title }}</p>
+                {% if food_group.food_items.all %}
+                    <i class='bx bxs-caret-up-square'></i>
+                {% endif %}
+
+            </div>
+            {% include 'MealPlans/HTMLWidgets/DayWidget/FoodGroupWidget/CalorieTrackerWidget/CalorieTrackerWidget.html' %}
+        </div>
+        <div class="food_group_options">
+            <i class='bx bx-dots-vertical-rounded'></i>
+        </div>
+        <div class="food_group_add_items">
+            <form action="{% url 'MealPlans:add_dish_product_to_plan' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="group_id" value="{{ food_group.id }}"/>
+                <button type="submit"><i class='bx bx-plus'></i></button>
+            </form>
+        </div>
+    </div>
+    <div class="food_items_section">
+        {% for food_item in food_group.food_items.all %}
+            {% include 'MealPlans/HTMLWidgets/DayWidget/FoodItemWidget/FoodItemWidget.html' with item=food_item %}
+        {% endfor %}
+    </div>
+</div>
