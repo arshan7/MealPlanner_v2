@@ -6,8 +6,8 @@ function get_box_exact_location(elem){
         (document.documentElement || document.body.parentNode || document.body).scrollTop;
     let box = elem.getBoundingClientRect();
 
-    let top_total = box.top + top;
-    let left_total = box.left + left;
+    let top_total = box.top;
+    let left_total = box.left ;
 
     return {"top": top_total, "left": left_total}
 

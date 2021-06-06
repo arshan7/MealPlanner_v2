@@ -1,7 +1,18 @@
 (function(){
     ael_FGW_fgdw_collapse();
+    ael_FGW_to_show_sub_dialog();
 })();
 
+
+function ael_FGW_to_show_sub_dialog(){
+    document.querySelectorAll(".food_group_options").forEach(function (element){
+        element.addEventListener("click", function (event){
+            if (event.currentTarget === element){
+                show_dialog_sub(element);
+            }
+        })
+    })
+}
 
 function ael_FGW_fgdw_collapse(){
 

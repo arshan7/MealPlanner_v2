@@ -11,7 +11,7 @@ function initialize_side_bar_navigation() {
             const meal_plan_menu_bar = document.getElementById("meal_plans_menu_bar");
             let box = get_box_exact_location(meal_plan_menu_bar);
             // let style = window.getComputedStyle(side_bar_button);
-            let side_bar_height = box.top + menubar.offsetHeight + 2;
+            let side_bar_height = box.top + meal_plan_menu_bar.offsetHeight;
             const sidebar = document.getElementById("meal_plans_side_bar");
             sidebar.style.top = side_bar_height + "px";
             meal_plan_collapse_sidebar();

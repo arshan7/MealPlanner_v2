@@ -1,19 +1,30 @@
 {% extends 'core/base/base.html' %}
 
+{% load static %}
+
+{% block main_page_extenal_css %}
+    {{ block.super }}
 
 
+{% endblock %}
 {% block sub_header_for_main_page %}
 
 {% endblock %}
 
 
 {% block main_content %}
+    {{ block.super }}
+
+
 
 {% endblock %}
 
 
 
 {% block main_page_after_html_scripts %}
+    {{ block.super }}
+
+    <script type="text/javascript" src="{% static 'core/core/js/home.js' %}"></script>
 
 {% endblock %}
 
