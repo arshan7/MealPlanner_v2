@@ -8,6 +8,7 @@
 {% block main_page_extenal_css %}
     <link rel="stylesheet" href="{% static "core/base/css/base_global.css" %}"/>
     {% include 'core/base/DialogSubWidget/DialogSubWidgetIncludes.html' %}
+    {% include 'core/base/DialogMainWidget/DialogMainIncludes.html' %}
     <link rel="stylesheet" href="{% static "core/base/BoxIcons/css/boxicons.min.css" %}"/>
 {% endblock %}
 {% block main_page_external_css_scripts %}
@@ -21,7 +22,8 @@
 {% endblock %}
 
 {% block global_main_content %}
- {% include 'core/base/DialogSubWidget/DialogSubWidget.html' %}
+    {% include 'core/base/DialogSubWidget/DialogSubWidget.html' %}
+    {% include 'core/base/DialogMainWidget/DialogMainWidget.html' %}
 {% endblock %}
 
 {% block main_nav_bar %}
@@ -34,6 +36,8 @@
     <script type="text/javascript" src="{% static "core/base/js/global_script.js" %}"></script>
     <script type="text/javascript" src="{% static "core/base/js/client_storage.js" %}"></script>
     <script type="text/javascript" src="{% static 'core/base/DialogSubWidget/js/DialogSubWidget.js' %}"></script>
+    <script type="text/javascript" src="{% static 'core/base/DialogMainWidget/js/DailogMainWidget.js' %}"></script>
+
 {% endblock %}
 
 {% block main_footer %}
