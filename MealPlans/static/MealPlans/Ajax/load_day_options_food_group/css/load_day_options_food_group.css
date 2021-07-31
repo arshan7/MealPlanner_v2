@@ -1,0 +1,14 @@
+.load_day_options_food_group{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.load_day_options_food_group_items{
+    text-decoration: none;
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+}

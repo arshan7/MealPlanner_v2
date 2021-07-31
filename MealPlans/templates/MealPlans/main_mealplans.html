@@ -5,6 +5,7 @@
 {% block main_page_extenal_css %}
     {{ block.super }}
     <link rel="stylesheet" href="{% static 'MealPlans/css/main_mealplans.css' %}"/>
+    <link rel="stylesheet" href="{% static 'MealPlans/CopyMealsWidget/css/CopyMealsWidget.css' %}" />
     <link rel="stylesheet"
           href="{% static 'MealPlans/MealPlanDaysNavigationWidget/css/MealPlanDaysNavigationWidget.css' %}"/>
     {% include 'MealPlans/HTMLWidgets/DayWidget/DayWidgetIncludes.html' %}
@@ -12,6 +13,10 @@
 
 {% block main_page_external_css_scripts %}
     {{ block.super }}
+    <script type="text/javascript"
+            src="{% static 'MealPlans/Ajax/load_day_options_food_group/js/load_day_options_food_group.js' %}"></script>
+    <link type="text/css" rel="stylesheet"
+          href="{% static 'MealPlans/Ajax/load_day_options_food_group/css/load_day_options_food_group.css' %}"/>
     {% include 'MealPlans/HTMLWidgets/SideBarNavigationWidget/SideBarNavigationWidgetIncludes.html' %}
 
 {% endblock %}
@@ -34,13 +39,17 @@
 {% block main_page_after_html_scripts %}
     {{ block.super }}
     <div id="state">
-         {{ data | json_script:'instance' }}
+        {{ data | json_script:'instance' }}
     </div>
     <script src="{% static "js/MealPlans/Main/main.js" %}"></script>
     <script type="text/javascript"
             src="{% static "MealPlans/SideBarNavigationWidget/js/SideBarNavigationWidget.js" %}"></script>
     <script type="text/javascript" src="{% static "MealPlans/DayWidget/js/DayWidget_day_plan_display.js" %}"></script>
-    <script type="text/javascript" src="{% static "MealPlans/DayWidget/FoodGroupWidget/js/FoodGroupWidget.js" %}"></script>
+    <script type="text/javascript"
+            src="{% static "MealPlans/DayWidget/FoodGroupWidget/js/FoodGroupWidget.js" %}"></script>
+    <script type="text/javascript"
+            src="{% static "MealPlans/CopyMealsWidget/js/CopyMealsWidget.js" %}"></script>
+
 
 
 

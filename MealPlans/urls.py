@@ -7,6 +7,7 @@ from .views import (
     create_day, update_day, delete_day, ajax_load_change_preset,
     ajax_load_order_from_preset_objects, ajax_load_load_default_order_for_food_group_based_on_preset,
     add_dishes_products_to_meal, ajax_load_items_or_more, ajax_save_items_to_food_group, ajax_save_default_day,
+    ajax_load_days_options_food_group_sub_menu, ajax_load_copy_meals, ajax_submit_copy_meals,
 )
 
 app_name = 'MealPlans'
@@ -42,4 +43,11 @@ urlpatterns = [
     path("ajax/load_more_products", ajax_load_items_or_more, name="ajax_load_more_products"),
     path("ajax/save_items_to_food_group", ajax_save_items_to_food_group, name="ajax_save_item_to_food_group"),
     path("ajax/save_default_day", ajax_save_default_day, name="ajax_save_default_day"),
+
+    path("ajax/load_days_food_group_options/<int:fg_id>", ajax_load_days_options_food_group_sub_menu,
+         name="ajax_load_days_options_food_group_sub_menu"),
+
+    path("ajax/load_copy_meals", ajax_load_copy_meals, name="ajax_load_copy_meals"),
+    path("ajax/submit_copy_meals", ajax_submit_copy_meals, name="ajax_submit_copy_meals"),
+
 ]

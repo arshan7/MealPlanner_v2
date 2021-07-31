@@ -1,0 +1,29 @@
+<div>
+    <label>
+        <select id="CMW_plan_name_select" class="CMW_drop_down">
+            <option selected disabled>Please select a Plan</option>
+            {% for plan in meal_plans %}
+                    <option id="{{ plan }}_name_select">{{ plan }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>
+        <select id="CMW_day_name_select" class="CMW_drop_down">
+            <option selected disabled>Please select a day</option>
+        </select>
+    </label>
+    <label>
+        <select id="CMW_meal_name_select" class="CMW_drop_down">
+            <option selected disabled>Please select a meal</option>
+        </select>
+    </label>
+    <button id="CMW_add">Add</button>
+    <div id="CMW_selected_available_container">
+    </div>
+    <div class="CMW_selected_meals_container_wrapper">
+        <div id="CMW_selected_meals_container">
+        </div>
+    </div>
+    <button id="CMW_selected_submit" data-url="{% url "MealPlans:ajax_submit_copy_meals" %}">submit</button>
+</div>
+

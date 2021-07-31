@@ -1,0 +1,72 @@
+.CMW_selected_plan {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: red;
+}
+
+.CMW_selected_plan_header{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    padding:5px 10px;
+    align-items: center;
+}
+
+.CMW_selected_day{
+    display: flex;
+    align-content: center;
+    justify-content:space-around;
+    align-items: center;
+    background-color: white;
+    margin:10px;
+}
+
+.CMW_selected_categories{
+    width:40%;
+    display: flex;
+    flex-direction: column;
+}
+
+#CMW_selected_meals_container{
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+.copyMeal_selected_category{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #5d7878;
+    margin: 5px;
+}
+
+.copyMeal_selected_category p{
+    word-wrap: break-word;
+    word-break: break-all;
+    padding:5px 10px;
+}
+
+.copyMeal_selected_category button{
+    margin: 5px 5px 5px auto;
+}
+
+.CMW_selected_day_name{
+    width:30%;
+    padding:5px 10px;
+}
+
+.CMW_selected_day_close{
+    padding:5px;
+}
+
+.CMW_meals{
+    color:white;
+}
+
+
+.CMW_drop_down{
+    padding:5px;
+}
+

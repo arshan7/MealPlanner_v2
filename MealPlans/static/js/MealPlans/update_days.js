@@ -27,7 +27,7 @@ $(document).ready(function () {
             if (changed_preset !== "") {
                 $.ajax(
                     {
-                        url: "http://127.0.0.1:8000/MealPlans/day/load_change_preset",
+                        url: "http://127.0.0.1:8000/mealplans/day/load_change_preset",
                         type: "POST",
                         headers: {
                             'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,

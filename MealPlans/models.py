@@ -4,6 +4,7 @@ from datetime import datetime
 from RecipeBook.models import DishItems
 from django.db.models.signals import pre_save
 from django.forms.models import model_to_dict
+from collections import OrderedDict
 
 
 # Create your models here.
@@ -81,6 +82,51 @@ class MealPlans(models.Model):
 
     def get_absolute_url(self):
         return reverse("MealPlans:get_meal_plan_single", kwargs={'plan_name': self.plan_name})
+
+    def get_food_items(self, name):
+        temp = {}
+        for food_group in getattr(self, name).FoodGroup.all().order_by('time'):
+            item_list = []
+            for item in food_group.food_items.all():
+                item_list.append(item.name)
+            temp[food_group.id] = {"title": food_group.title, "items": item_list}
+        return temp
+
+    def get_json(self):
+        days = {}
+        if self.monday:
+            days["monday"] = {"day": self.monday.title,
+                              "food_groups": self.get_food_items("monday"),
+                              }
+        if self.tuesday:
+            days["tuesday"] = {"day": self.tuesday.title,
+                               "food_groups": self.get_food_items("tuesday"),
+                               }
+
+        if self.wednesday:
+            days["wednesday"] = {"day": self.wednesday.title,
+                                 "food_groups": self.get_food_items("wednesday"),
+                                 }
+        if self.thursday:
+            days["thursday"] = {"day": self.thursday.title,
+                                "food_groups": self.get_food_items("thursday"),
+                                }
+        if self.friday:
+            days["friday"] = {"day": self.friday.title,
+                              "food_groups": self.get_food_items("friday"),
+                              }
+        if self.saturday:
+            days["saturday"] = {"day": self.saturday.title,
+                                "food_groups": self.get_food_items("saturday"),
+                                }
+        if self.sunday:
+            days["sunday"] = {"day": self.sunday.title,
+                              "food_groups": self.get_food_items("sunday"),
+                              }
+
+        return {"plan_name": self.plan_name, "default_day": self.default_day,
+                "days": days,
+                }
 
 
 class Preset(models.Model):
@@ -162,7 +208,8 @@ def change_order_on_model_if_same_order_is_preset(self, old, model, insert, swap
                 self.order = closest_preset.order + 1
             filter_args['order'] = self.order
             change_order_on_model_if_same_order_is_preset(self, old, model,
-                                                          False, False, properties_to_change, filter_args, exclude_args)
+                                                          False, False, properties_to_change, filter_args,
+                                                          exclude_args)
     elif matched_instance and swap:
         for attribute in properties_to_change:
             att1 = getattr(old, attribute)
@@ -175,8 +222,6 @@ def change_order_on_model_if_same_order_is_preset(self, old, model, insert, swap
         matched_instance.save(swap=False)
     else:
         print("invalid options case arised try to solve it")
-
-
 
 
 def get_changed_data(old, new):

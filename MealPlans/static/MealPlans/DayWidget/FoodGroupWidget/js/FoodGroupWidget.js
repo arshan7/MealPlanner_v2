@@ -8,7 +8,23 @@ function ael_FGW_to_show_sub_dialog(){
     document.querySelectorAll(".food_group_options").forEach(function (element){
         element.addEventListener("click", function (event){
             if (event.currentTarget === element){
-                show_dialog_sub(element);
+                window.clientStorage.setItem(clientStorageProperties.current_category_selected, element.getAttribute("data-id"))
+                let p = new Promise((resolve, fail)=>{
+                    $.ajax({
+                        url: element.getAttribute("data-url"),
+                        type: "GET",
+
+                        success: function (data){
+                            document.querySelector(".dialog_sub_content").innerHTML= data;
+                            resolve()
+                        }
+
+                    })
+                });
+                p.then(()=>{
+                    show_dialog_sub(element);
+                    ael_LDOFG_menu_items();
+                });
             }
         })
     })

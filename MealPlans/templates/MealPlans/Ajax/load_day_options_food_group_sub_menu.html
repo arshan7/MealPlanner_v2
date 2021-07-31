@@ -1,0 +1,15 @@
+{% load static %}
+
+
+<div class="load_day_options_food_group">
+    <a id="copy_meals_from" href="{% url "MealPlans:ajax_load_copy_meals" %}" class="load_day_options_food_group_items">copy Meals From</a>
+    {% if meal_items %}
+        <a id="copy_meals_to" href="{% url "MealPlans:ajax_load_copy_meals" %}" class="load_day_options_food_group_items">copy Meals To</a>
+    {% endif %}
+
+    <div class="load_day_options_food_group_css_and_script">
+
+    </div>
+
+</div>
+

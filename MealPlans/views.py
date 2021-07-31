@@ -1,6 +1,7 @@
 import json
+import traceback
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import JsonResponse
 from django.core import serializers
 
@@ -12,7 +13,7 @@ from .forms import (CreateMealPlanForm, UpdateMealPlanForm, DeleteMealPlanForm,
                     PresetDynamicFieldsForm, SearchForm)
 
 from .models import MealPlans, Days, FoodGroup, Preset, MealPreset, DishItems
-from .db_helper import create_day_initialize
+from .db_helper import create_day_initialize, copy_food_items
 from .models import find_closed_preset
 
 
@@ -37,6 +38,7 @@ def create_meal_plan(request):
     return render(request, "MealPlans/MealPlan/create_meal_plan.html", context=context)
 
 
+# accepts id to get plan name to delete
 def delete_meal_plan(request):
     context = {
         "form": DeleteMealPlanForm()
@@ -44,10 +46,11 @@ def delete_meal_plan(request):
     try:
         if request.method == "POST":
             plan_name = request.POST.get("plan_name") or None
+            print(plan_name)
             if plan_name is not None:
-                MealPlans.objects.get(plan_name=plan_name).delete()
+                MealPlans.objects.get(id=plan_name).delete()
     except MealPlans.DoesNotExist:
-        pass
+        traceback.print_exc()
     return render(request, "MealPlans/MealPlan/delete_meal_plan.html", context=context)
 
 
@@ -109,7 +112,6 @@ def get_meal_plan(request, plan_name=None):
         'all_instances': all_instances,
     }
     data = serializers.serialize("json", [instance])
-    print(data)
     my_data = request.session.get('instance')
     context['data'] = data
     request.session['instance'] = data
@@ -380,3 +382,53 @@ def ajax_save_default_day(request):
         meal_instance.save()
         return JsonResponse(data={'status': 'success'})
     return JsonResponse(data={'status': 'fail'})
+
+
+def ajax_load_days_options_food_group_sub_menu(request, fg_id):
+    if request.method == "GET":
+        data = request.session.get("instance")
+        my_dict = json.loads(data)
+        my_dict = my_dict[0]
+        fg = FoodGroup.objects.get(id=fg_id)
+        context = {
+            "meal_items": fg.food_items.all()
+        }
+        return render(request, "MealPlans/Ajax/load_day_options_food_group_sub_menu.html", context=context)
+
+
+def ajax_load_copy_meals(request):
+    if request.method == "GET":
+        copy_meals_from_or_to = request.GET.get("copy_meals_from_or_to")
+        copy_meals_from_or_to = True if copy_meals_from_or_to == "true" else False
+        request.session["copy_meals_from_or_to"] = copy_meals_from_or_to
+        all_meal_plans = {}
+        for meal_plan in MealPlans.objects.all():
+            all_meal_plans[meal_plan.plan_name] = meal_plan.get_json()
+
+    context = {
+        'all_meal_plans': all_meal_plans,
+    }
+    return render(request, "MealPlans/Ajax/load_copy_meals_widget.html", context=context)
+
+
+def ajax_submit_copy_meals(request):
+    if request.method == "POST":
+
+        data = json.loads(request.POST.get("data"))
+        source = int(data['source_food_id'])
+        selected_plans = data['selected_plans']
+        source_to_selected_plans = request.session['copy_meals_from_or_to']
+        selected_plans_food_groups = []
+
+        for plan in selected_plans:
+            for day in selected_plans[plan]:
+                for meals in selected_plans[plan][day]:
+                    selected_plans_food_groups.append(int(meals))
+
+        session = json.loads(request.session.get("instance"))[0]
+
+        plan_name = session["fields"]["plan_name"]
+
+        copy_food_items(source, selected_plans_food_groups, source_to_selected_plans)
+        return JsonResponse(
+            {"response": "success", "url": reverse("MealPlans:get_meal_plan_single", kwargs={"plan_name": plan_name})})

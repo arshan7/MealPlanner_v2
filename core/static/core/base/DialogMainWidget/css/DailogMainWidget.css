@@ -13,10 +13,12 @@
 
 }
 
+.dialog_main_header{
+    display: flex;
+}
+
 .dialog_main_close {
-    position: absolute;
-    top: 5px;
-    right: 5px;
+    margin-left:auto;
 }
 
 .dialog_main_close i {
@@ -44,6 +46,10 @@
     position: fixed;
     background-color: #2f2d2d;
     transition: visibility 1s;
+}
+
+.dialog_main_content{
+    padding:10px;
 }
 
 

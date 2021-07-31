@@ -13,6 +13,7 @@
     opacity: 0;
     cursor: pointer;
     transition: visibility 1s;
+    z-index:1;
 
 }
 
@@ -42,10 +43,14 @@
 }
 
 .dialog_sub_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     position: fixed;
     background-color: #2f2d2d;
     transition: visibility 1s;
+    z-index:999;
 }
 
 .dialog_default_width_height {
@@ -53,4 +58,11 @@
     max-width: 100%;
     min-height: 150px;
     max-height: 100%;
+}
+
+.dialog_sub_content{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }

@@ -12,6 +12,7 @@ class DishItems(PolymorphicModel):
 
 class Dish(DishItems):
     picture = models.ImageField(blank=False, null=False)
+    test= models.TextField()
     category_choices = (('Veg', 'Veg'), ('NonVeg', 'NonVeg'))
     category = models.CharField(max_length=60, choices=category_choices,
                                 null=False, blank=False)

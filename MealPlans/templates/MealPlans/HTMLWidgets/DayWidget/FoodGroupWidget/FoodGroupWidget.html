@@ -10,7 +10,8 @@
             </div>
             {% include 'MealPlans/HTMLWidgets/DayWidget/FoodGroupWidget/CalorieTrackerWidget/CalorieTrackerWidget.html' %}
         </div>
-        <div class="food_group_options">
+        <div id="food_group_removal_id" class="food_group_options" data-id="{{ food_group.id }}"
+             data-url="{% url 'MealPlans:ajax_load_days_options_food_group_sub_menu' food_group.id %}">
             <i class='bx bx-dots-vertical-rounded'></i>
         </div>
         <div class="food_group_add_items">
@@ -27,3 +28,25 @@
         {% endfor %}
     </div>
 </div>
+
+<script id="foodGroupWidgetScript">
+    (async function () {
+        let element = document.getElementById("food_group_removal_id");
+
+
+        Object.defineProperties(element, {
+            context: {
+                enumerable: true, writable: false, configurable: false,
+                value: Object.freeze({
+                    "data-id":{{ food_group.id }},
+                    "data-url": "{% url 'MealPlans:ajax_load_days_options_food_group_sub_menu' food_group.id%}",
+
+                })
+            }
+        })
+
+
+        element.removeAttribute("id");
+        document.getElementById("foodGroupWidgetScript").remove();
+    })();
+</script>
